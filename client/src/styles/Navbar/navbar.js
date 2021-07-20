@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '20em',
         [theme.breakpoints.down('xs')]: {
             maxWidth: '13.5em'
-        }
+        },
+        fontSize: '2em',
+        fontFamily: 'Ubuntu, sans-serif'
     },
     navlink: {
         color: theme.palette.common.darkBlue,

@@ -1,13 +1,14 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const orange = '#FF7900';
+// const orange = '#FF7900';
+const green = 'rgba(58,118,82,255)';
 const darkBlue = '#323C4F';
 
-const theme = createMuiTheme({
+const theme = createTheme({
     palette: {
         common: {
             darkBlue: darkBlue,
-            orange: orange,
+            orange: green,
             lightDark: '#393C43'
         }
     },

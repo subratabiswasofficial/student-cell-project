@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { AppBar, Avatar, Grid, Typography, Hidden, useMediaQuery } from '@material-ui/core';
-import logo from '../../img/logo.png';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import StudentMenu from './StudentMenu';
@@ -9,7 +8,6 @@ import Drawer from './Drawer';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useStyles from '../../styles/Navbar/navbar';
-
 
 const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiveTab, isInProfilePage, setIsInProfilePage }) => {
     useEffect(() => {
@@ -44,8 +42,10 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
         <>
             <AppBar elevation={0} position={matchSm ? 'fixed' : 'absolute'} style={{ backgroundColor: 'transparent' }}>
                 <Grid container alignItems="center" justify="space-between" className={classes.appbar}>
-                    <Grid item>
-                        <img className={classes.logo} src={logo} alt="Jalpaigudi Government Engineering College" />
+                    <Grid item style={{ padding: '1.5em 1em' }}>
+                        <Typography className={classes.logo} variant="h4">
+                            College Data Management System
+                        </Typography>
                     </Grid>
                     <Grid item>
                         {!matchSm ? (
