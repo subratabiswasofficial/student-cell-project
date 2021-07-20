@@ -6,6 +6,7 @@ import db from './config/db';
 import path from 'path';
 
 const NAMESPACE = 'Server';
+const NODE_ENV = process.env.NODE_ENV;
 const app = express();
 
 /** Database connection */
@@ -45,7 +46,7 @@ app.use('/api', routes);
 // });
 
 /** Only for heroku build */
-if (process.env.NODE_ENV === 'production') {
+if (NODE_ENV === 'production') {
     // Set static folder
     app.use(express.static('client/build'));
     app.get('*', (req, res) => {
