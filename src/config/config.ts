@@ -3,7 +3,7 @@ import dotevn from 'dotenv';
 dotevn.config();
 
 const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'localhost';
-const SERVER_PORT = process.env.SERVER_PORT || '4000';
+const SERVER_PORT = process.env.PORT || 4000;
 const SERVER_MODE = process.env.NODE_ENV || 'development';
 
 const SERVER = {
