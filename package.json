@@ -1,41 +1,45 @@
 {
-  "name": "student-cell-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
+    "name": "student-cell-project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
         "build": "rm -rf dist/ && tsc",
-        "dev": "nodemon src/server.ts",
         "start": "node dist/server.js",
-        "format": "prettier --write ./src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/subratabiswasofficial/student-cell-project.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/subratabiswasofficial/student-cell-project/issues"
-  },
-  "homepage": "https://github.com/subratabiswasofficial/student-cell-project#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.3",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.13",
-    "@types/jsonwebtoken": "^8.5.4",
-    "@types/mongoose": "^5.11.97",
-    "@types/uuid": "^8.3.1",
-    "node-ts": "^5.1.1",
-    "nodemon": "^2.0.12",
-    "typescript": "^4.3.5"
-  }
+        "format": "prettier --write ./src",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"nodemon src/server.ts\"  \"npm run client\"",
+        "heroku-postbuild": "npm run build && npm install --perfix client && npm run build --prefix client"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/subratabiswasofficial/student-cell-project.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/subratabiswasofficial/student-cell-project/issues"
+    },
+    "homepage": "https://github.com/subratabiswasofficial/student-cell-project#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.13.3",
+        "student-cell-frontend": "file:client",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/dotenv": "^8.2.0",
+        "@types/express": "^4.17.13",
+        "@types/jsonwebtoken": "^8.5.4",
+        "@types/mongoose": "^5.11.97",
+        "@types/uuid": "^8.3.1",
+        "concurrently": "^6.2.0",
+        "node-ts": "^5.1.1",
+        "nodemon": "^2.0.12",
+        "typescript": "^4.3.5"
+    }
 }
