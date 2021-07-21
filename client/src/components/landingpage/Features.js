@@ -2,8 +2,8 @@ import { Button, Grid, Typography, IconButton, useMediaQuery } from '@material-u
 import { useTheme } from '@material-ui/core/styles';
 import React, { useRef } from 'react';
 import Carousel, { consts } from 'react-elastic-carousel';
-import skills from '../../assets/skills.jpg';
-import collegeBuilding from '../../assets/club.jpg';
+import skills from '../../assets/skills_1.jpeg';
+import collegeBuilding from '../../assets/collegeBuilding.png';
 import achivements from '../../assets/achievements.png';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -30,8 +30,6 @@ const featureData = [
         buttonTitle: 'ACHIVEMENTS'
     }
 ];
-
-
 
 const Features = () => {
     const classes = useStyles();

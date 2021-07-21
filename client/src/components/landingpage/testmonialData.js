@@ -2,7 +2,7 @@ const testimonialData = [
     {
         id: 1,
         name: 'Raj Vikramaditya',
-        img: 'https://scontent.fccu16-1.fna.fbcdn.net/v/t1.6435-9/c289.0.1365.1365a/s851x315/60855042_1565372126931005_7360585256757362688_n.jpg?_nc_cat=104&_nc_rgb565=1&ccb=1-3&_nc_sid=da31f3&_nc_ohc=j_E8y-t-A0oAX-fTzT2&_nc_ht=scontent.fccu16-1.fna&oh=7cb6ebb603ffe766be4889fa739620bd&oe=60FBAE16',
+        img: 'https://media-exp1.licdn.com/dms/image/C5103AQEDFJx9B6TfsA/profile-displayphoto-shrink_400_400/0/1578164235412?e=1628121600&v=beta&t=vFEGFy38Eo4pcF0_HClX_1Z8kyXL6MTDz1MRwR03XAI',
         jobDesp:
             'Media.net is a leading global advertising company with one of the most comprehensive portfolios of advertising technology in the industry across search, native, display, mobile, local,products and video. Media.net manages high-quality ad supply on over 500,000 websites and its platform and products are licensed by some of the largest publishers, ad networks and other ad tech companies worldwide.',
         department: 'Information Technology',

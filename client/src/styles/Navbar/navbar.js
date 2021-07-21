@@ -11,15 +11,14 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '20em',
         [theme.breakpoints.down('xs')]: {
             maxWidth: '13.5em'
-        },
-        fontSize: '2em',
-        fontFamily: 'Ubuntu, sans-serif'
+        }
     },
     navlink: {
         color: theme.palette.common.darkBlue,
         fontSize: '1em',
         fontFamily: 'Ubuntu, sans-serif',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        paddingLeft: '0.5em'
     },
     navIcon: {
         verticalAlign: 'bottom',
@@ -27,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
         transition: 'all 0.15s linear'
     },
     navItem: {
-        marginRight: '2.5em'
+        marginRight: '2.5em',
+        paddingTop: '0.2em',
+        paddingBottom: '0.4em'
     }
 }));
 

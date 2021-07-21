@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, IconButton, SwipeableDrawer, Accordion, AccordionSummary, AccordionDetails, Typography, Divider } from '@material-ui/core';
-import {  useTheme } from '@material-ui/styles';
+import { useTheme } from '@material-ui/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import linkdatas from '../navbar/navlinkData';
@@ -8,9 +8,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useStyles from '../../styles/Navbar/drawer';
 
-
-
-const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading }, setOpenAuthModal, setActiveTab, setIsInProfilePage, isInProfilePage }) => {
+const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading }, setOpenAuthModal, setActiveTab, setIsInProfilePage, isInProfilePage,setIsInHomePage }) => {
     const classes = useStyles();
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
     const [expanded, setExpanded] = useState(false);
@@ -41,6 +39,7 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                                         component={Link}
                                         to="/profile/me"
                                         onClick={() => {
+                                            setIsInHomePage(false);
                                             setIsInProfilePage(true);
                                             setOpenDrawer(false);
                                         }}
@@ -63,7 +62,7 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                             </Grid>
                             <Grid item>
                                 {isAuthenticated ? (
-                                    <Typography className={classes.text} style={{  opacity: 0.85 }} variant="body1">
+                                    <Typography className={classes.text} style={{ opacity: 0.85 }} variant="body1">
                                         Logout
                                     </Typography>
                                 ) : (
@@ -106,13 +105,21 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                                             STUDENT
                                         </Typography>
                                     </AccordionSummary>
-                                    <AccordionDetails
-                                        className={classes.accordionDetails}
-                                    >
+                                    <AccordionDetails className={classes.accordionDetails}>
                                         <Grid container direction="column">
                                             {linkdatas[0].links.map((linkName) => {
                                                 return (
-                                                    <Grid item key={linkName.link}>
+                                                    <Grid
+                                                        component={Link}
+                                                        to={`/${linkdatas[0].to}`}
+                                                        item
+                                                        key={linkName.link}
+                                                        onClick={() => {
+                                                            setIsInHomePage(false);
+                                                            setIsInProfilePage(false);
+                                                            setOpenDrawer(false);
+                                                        }}
+                                                    >
                                                         <Typography variant="body2" className={classes.link}>
                                                             {linkName.link}
                                                         </Typography>
@@ -149,13 +156,21 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                                             CLUB
                                         </Typography>
                                     </AccordionSummary>
-                                    <AccordionDetails
-                                        className={classes.accordionDetails}
-                                    >
+                                    <AccordionDetails className={classes.accordionDetails}>
                                         <Grid container direction="column">
                                             {linkdatas[1].links.map((linkName) => {
                                                 return (
-                                                    <Grid item key={linkName.link}>
+                                                    <Grid
+                                                        component={Link}
+                                                        to={`/${linkdatas[1].to}`}
+                                                        item
+                                                        key={linkName.link}
+                                                        onClick={() => {
+                                                            setIsInHomePage(false);
+                                                            setIsInProfilePage(false);
+                                                            setOpenDrawer(false);
+                                                        }}
+                                                    >
                                                         <Typography variant="body2" className={classes.link}>
                                                             {linkName.link}
                                                         </Typography>
@@ -192,13 +207,21 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                                             TRANING AND PLACEMENTS
                                         </Typography>
                                     </AccordionSummary>
-                                    <AccordionDetails
-                                        className={classes.accordionDetails}
-                                    >
+                                    <AccordionDetails className={classes.accordionDetails}>
                                         <Grid container direction="column">
                                             {linkdatas[2].links.map((linkName) => {
                                                 return (
-                                                    <Grid item key={linkName.link}>
+                                                    <Grid
+                                                        component={Link}
+                                                        to={`/${linkdatas[2].to}`}
+                                                        item
+                                                        key={linkName.link}
+                                                        onClick={() => {
+                                                            setIsInHomePage(false);
+                                                            setIsInProfilePage(false);
+                                                            setOpenDrawer(false);
+                                                        }}
+                                                    >
                                                         <Typography variant="body2" className={classes.link}>
                                                             {linkName.link}
                                                         </Typography>
@@ -235,13 +258,21 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                                             HOSTEL
                                         </Typography>
                                     </AccordionSummary>
-                                    <AccordionDetails
-                                        className={classes.accordionDetails}
-                                    >
+                                    <AccordionDetails className={classes.accordionDetails}>
                                         <Grid container direction="column">
                                             {linkdatas[3].links.map((linkName) => {
                                                 return (
-                                                    <Grid item key={linkName.link}>
+                                                    <Grid
+                                                        component={Link}
+                                                        to={`/${linkdatas[3].to}`}
+                                                        item
+                                                        key={linkName.link}
+                                                        onClick={() => {
+                                                            setIsInHomePage(false);
+                                                            setIsInProfilePage(false);
+                                                            setOpenDrawer(false);
+                                                        }}
+                                                    >
                                                         <Typography variant="body2" className={classes.link}>
                                                             {linkName.link}
                                                         </Typography>
@@ -278,13 +309,21 @@ const Drawer = ({ openDrawer, setOpenDrawer, auth: { isAuthenticated, loading },
                                             SOFT SKILLS
                                         </Typography>
                                     </AccordionSummary>
-                                    <AccordionDetails
-                                        className={classes.accordionDetails}
-                                    >
+                                    <AccordionDetails className={classes.accordionDetails}>
                                         <Grid container direction="column">
                                             {linkdatas[4].links.map((linkName) => {
                                                 return (
-                                                    <Grid item key={linkName.link}>
+                                                    <Grid
+                                                        component={Link}
+                                                        to={`/${linkdatas[4].to}`}
+                                                        item
+                                                        key={linkName.link}
+                                                        onClick={() => {
+                                                            setIsInHomePage(false);
+                                                            setIsInProfilePage(false);
+                                                            setOpenDrawer(false);
+                                                        }}
+                                                    >
                                                         <Typography variant="body2" className={classes.link}>
                                                             {linkName.link}
                                                         </Typography>

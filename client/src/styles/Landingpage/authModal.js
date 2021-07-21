@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import jgecBackground from '../../assets/landingpageBackground.jpeg';
+import jgecBackground from '../../assets/landingpageBackground.jpg';
 import modal from '../../assets/modal.png';
 import modalContainer from '../../assets/modalContainer.png';
 

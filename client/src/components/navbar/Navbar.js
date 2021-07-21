@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { AppBar, Avatar, Grid, Typography, Hidden, useMediaQuery } from '@material-ui/core';
+import logo from '../../img/logo.png';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import StudentMenu from './StudentMenu';
@@ -9,14 +11,25 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useStyles from '../../styles/Navbar/navbar';
 
-const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiveTab, isInProfilePage, setIsInProfilePage }) => {
+const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiveTab, isInProfilePage, setIsInProfilePage,isInHomePage,setIsInHomePage,setActiveSection,activeSection }) => {
+    
+
+    
+
+    // active Section settings
     useEffect(() => {
-        if (window.location.pathname === '/profile/me') {
+        if (window.location.pathname === '/') {
+            setIsInHomePage(true);
+            setIsInProfilePage(false);
+        } if (window.location.pathname === '/profile/me'){
             setIsInProfilePage(true);
-        } else {
+            setIsInHomePage(false);
+        }else{
+            setIsInHomePage(false);
             setIsInProfilePage(false);
         }
-    }, [setIsInProfilePage, isInProfilePage]);
+    }, []);
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -42,10 +55,16 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
         <>
             <AppBar elevation={0} position={matchSm ? 'fixed' : 'absolute'} style={{ backgroundColor: 'transparent' }}>
                 <Grid container alignItems="center" justify="space-between" className={classes.appbar}>
-                    <Grid item style={{ padding: '1.5em 1em' }}>
-                        <Typography className={classes.logo} variant="h4">
-                            College Data Management System
-                        </Typography>
+                    <Grid
+                        item
+                        component={Link}
+                        to="/"
+                        onClick={() => {
+                            setIsInProfilePage(false);
+                            setIsInHomePage(true);
+                        }}
+                    >
+                        <img className={classes.logo} src={logo} alt="Jalpaigudi Government Engineering College" />
                     </Grid>
                     <Grid item>
                         {!matchSm ? (
@@ -53,14 +72,17 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                                 <Grid item style={{ marginRight: '1em' }}>
                                     {isAuthenticated ? (
                                         !isInProfilePage ? (
-                                            <Typography component={Link} to="/profile/me" onClick={() => setIsInProfilePage(true)} variant="body1" style={{ cursor: 'pointer', color: '#fff' }}>
+                                            <Typography component={Link} to="/profile/me" onClick={() => {setIsInProfilePage(true);setIsInHomePage(false)}} variant="body1" style={{ cursor: 'pointer', color: '#fff' }}>
                                                 PROFILE
                                             </Typography>
                                         ) : (
                                             <Typography
                                                 component={Link}
                                                 to="/"
-                                                onClick={() => setIsInProfilePage(false)}
+                                                onClick={() => {
+                                                    setIsInProfilePage(false);
+                                                    setIsInHomePage(true);
+                                                }}
                                                 variant="body1"
                                                 style={{ cursor: 'pointer', color: '#fff', fontSize: '1.2em' }}
                                             >
@@ -89,6 +111,8 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                             <Drawer
                                 isInProfilePage={isInProfilePage}
                                 setIsInProfilePage={setIsInProfilePage}
+                                isInHomePage={isInHomePage}
+                                setIsInHomePage={setIsInHomePage}
                                 setActiveTab={setActiveTab}
                                 setOpenAuthModal={setOpenAuthModal}
                                 openDrawer={openDrawer}
@@ -97,10 +121,10 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                         )}
                     </Grid>
                 </Grid>
-                {!isInProfilePage && (
+                {isInHomePage && (
                     <Hidden smDown>
-                        <AppBar elevation={0} position="static" style={{ backgroundColor: 'transparent' }}>
-                            <Grid container style={{ marginTop: '0.5em' }} justify="flex-end" alignItems="center">
+                        <AppBar elevation={0} position="static" style={{ backgroundColor: 'transparent', zIndex: 303 }}>
+                            <Grid container style={{}} justify="flex-end" alignItems="center">
                                 <Grid item className={classes.navItem}>
                                     <Typography
                                         className={classes.navlink}
@@ -118,7 +142,7 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                                         />
                                     </Typography>
                                 </Grid>
-                                <Grid item className={classes.navItem}>
+                                <Grid item className={classes.navItem} >
                                     <Typography
                                         className={classes.navlink}
                                         variant="body2"
@@ -135,7 +159,7 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                                         />
                                     </Typography>
                                 </Grid>
-                                <Grid item className={classes.navItem}>
+                                <Grid item className={classes.navItem} >
                                     <Typography
                                         className={classes.navlink}
                                         variant="body2"
@@ -152,7 +176,7 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                                         />
                                     </Typography>
                                 </Grid>
-                                <Grid item className={classes.navItem}>
+                                <Grid item className={classes.navItem} >
                                     <Typography
                                         className={classes.navlink}
                                         variant="body2"
@@ -172,7 +196,8 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                                 <Grid
                                     item
                                     style={{
-                                        marginRight: '1em'
+                                        marginRight: '1em',
+                                        
                                     }}
                                     className={classes.navItem}
                                 >
@@ -198,7 +223,16 @@ const Navbar = ({ setOpenAuthModal, auth: { isAuthenticated, loading }, setActiv
                 )}
             </AppBar>
 
-            <StudentMenu anchorEl={anchorEl} anchorId={anchorId} handleClose={handleClose} activeLink={activeLink} setActiveLink={setActiveLink} />
+            <StudentMenu
+                anchorEl={anchorEl}
+                anchorId={anchorId}
+                handleClose={handleClose}
+                activeLink={activeLink}
+                setActiveLink={setActiveLink}
+                setActiveSection={setActiveSection}
+                setIsInProfilePage={setIsInProfilePage}
+                setIsInHomePage={setIsInHomePage}
+            />
         </>
     );
 };
