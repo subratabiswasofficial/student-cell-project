@@ -76,12 +76,4 @@ npm run build
 
 #
 
-## Incompleted tasks
-
-### Not able to add `email varification`
-
-### Not able to add `multiple internship and education`
-
-#
-
-### App is hosted on heroku, [click here](https://simple-text-resume-builder.herokuapp.com/) to visit.
+### App is hosted on heroku, [click here](https://student-cell-project.herokuapp.com/) to visit.
