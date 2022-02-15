@@ -13,7 +13,7 @@ const connect = async () => {
             useCreateIndex: true
         });
         logging.info(NAMESPACE, `Mongodb connection succeful`);
-    } catch (error) {
+    } catch (error: any) {
         logging.error(NAMESPACE, `Mongodb connection error`, error.message);
     }
 };
